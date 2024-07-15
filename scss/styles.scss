@@ -84,7 +84,7 @@ img {
     .swiper-slide img {
       user-select: none;
       cursor: pointer;
-      object-fit: cover;
+      object-fit: fill;
       // width: 90%;
     }
   }
