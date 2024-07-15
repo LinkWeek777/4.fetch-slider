@@ -51,7 +51,7 @@ showNowPlaying();
 
 document.addEventListener('DOMContentLoaded', function () {
   const swiper = new Swiper('.swiper', {
-    loop: true,
+    // loop: true,
     speed: 300,
     spaceBetween: 30,
     freeMode: true,
