@@ -52,9 +52,9 @@ showNowPlaying();
 document.addEventListener('DOMContentLoaded', function () {
   const swiper = new Swiper('.swiper', {
     // loop: true,
-    speed: 300,
+    speed: 1000,
     spaceBetween: 30,
-    freeMode: true,
+    // freeMode: true,
     slidesPerView: 1,
 
     autoplay: {
