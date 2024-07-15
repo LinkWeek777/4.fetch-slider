@@ -1,0 +1,94 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  padding: 7px;
+
+  text-align: center;
+  background-color: $secondary-color;
+  border-radius: 5px;
+  transition: all 0.5s ease-in-out;
+  line-height: 1.2;
+
+  &:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    background-color: #0a498b;
+  }
+}
+
+//padding & margin
+$spaceamounts: (1, 2, 3, 4, 5);
+
+@each $space in $spaceamounts {
+  .mb-#{$space} {
+    margin-bottom: #{$space}rem;
+  }
+  .mt-#{$space} {
+    margin-top: #{$space}rem;
+  }
+
+  .ms-#{$space} {
+    margin-left: #{$space}rem;
+  }
+
+  .me-#{$space} {
+    margin-right: #{$space}rem;
+  }
+
+  .m-#{$space} {
+    margin: #{$space}rem;
+  }
+  .my-#{$space} {
+    margin: #{$space}rem 0;
+  }
+  .mx-#{$space} {
+    margin: 0 #{$space}rem;
+  }
+  .m-auto {
+    margin: auto;
+  }
+
+  .pb-#{$space} {
+    padding-bottom: #{$space}rem;
+  }
+  .pt-#{$space} {
+    padding-top: #{$space}rem;
+  }
+
+  .ps-#{$space} {
+    padding-left: #{$space}rem;
+  }
+
+  .pe-#{$space} {
+    padding-right: #{$space}rem;
+  }
+
+  .p-#{$space} {
+    padding: #{$space}rem;
+  }
+  .py-#{$space} {
+    padding: #{$space}rem 0;
+  }
+  .px-#{$space} {
+    padding: 0 #{$space}rem;
+  }
+  .p-auto {
+    padding: auto;
+  }
+}
+
+// text-alignment
+
+.text-center {
+  text-align: center;
+}
