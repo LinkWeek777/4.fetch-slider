@@ -1,4 +1,13 @@
 $black-color: #010305;
 $white-color: #fff;
 $primary-color: #020d18;
-$secondary-color: #063567;
+$secondary-color: hsl(211, 89%, 21%);
+$gold-color: #f5b724;
+
+@function set-text-color($color) {
+  @if lightness($color) < 70% {
+    @return #333;
+  } @else {
+    @return #fff;
+  }
+}

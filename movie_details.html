@@ -10,15 +10,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
-    ></script>
     <link rel="stylesheet" href="css/styles.css" />
     <script defer src="script.js"></script>
     <title>TMDB</title>
@@ -39,24 +30,19 @@
       </div>
     </header>
 
-    <!-- Naw-playing -->
-    <section class="now-playing py-2">
+    <!-- Movie details -->
+    <section class="movie-details backdrop">
       <div class="container">
-        <h1 class="title text-center p-1 pb-2">Now Playing</h1>
-        <div class="swiper">
-          <div class="swiper-wrapper mb-3"></div>
+        <div class="movie-details__back-button mb-3">
+          <a class="btn" href="index.html">Back To Movies</a>
         </div>
+        <div class="movie-details__hero"></div>
       </div>
     </section>
 
-    <!-- Popular movies -->
-    <section class="popular-movies mt-3">
-      <div class="container">
-        <div class="popular-movies__header p-1 pb-2">
-          <h1>Popular movies</h1>
-        </div>
-        <div class="popular-movies__content grid"></div>
-      </div>
+    <!-- Movie info -->
+    <section class="movie-info">
+      <div class="container"></div>
     </section>
 
     <!-- Main footer -->
