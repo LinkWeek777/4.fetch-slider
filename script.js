@@ -200,7 +200,7 @@ async function showDetails() {
 
 //router
 switch (location.pathname) {
-  case '/index.html':
+  case '/' || '/index.html':
     showPopular();
     showNowPlaying();
     loadSlider();
