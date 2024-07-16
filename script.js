@@ -208,3 +208,4 @@ switch (location.pathname) {
   case '/movie_details.html':
     showDetails();
 }
+console.log(location.pathname);
