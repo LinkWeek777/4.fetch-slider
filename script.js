@@ -122,7 +122,7 @@ async function showDetails() {
       ? global.urlToBackdrop + movie.poster_path
       : '/images/no-image.jpg'
   }" alt="${movie.title}" /></div>
-          <div class="description ms-3">
+          <div class="description ms-1">
             <h2 class="description__title">${movie.title}</h2>
             <i class="fas fa-star fa-xs star gold-text my-1">
               <span class="light-text"
@@ -200,7 +200,8 @@ async function showDetails() {
 
 //router
 switch (location.pathname) {
-  case '/' || '/index.html':
+  case '/':
+  case '/index.html':
     showPopular();
     showNowPlaying();
     loadSlider();
@@ -208,4 +209,3 @@ switch (location.pathname) {
   case '/movie_details.html':
     showDetails();
 }
-console.log(location.pathname);
