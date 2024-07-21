@@ -3,6 +3,7 @@ const global = {
   API_KEY: 'fb7bb23f03b6994dafc674c074d01761',
   urlToImage: 'https://image.tmdb.org/t/p/w500',
   urlToBackdrop: 'https://image.tmdb.org/t/p/original',
+  info: { page: 1, totalPages: 1 },
 };
 
 async function fetchData(endpoint) {
@@ -198,6 +199,92 @@ async function showDetails() {
     .appendChild(document.createTextNode(companiesText));
 }
 
+async function searchMovies(endpoint, query) {
+  try {
+    const response = await fetch(
+      `${global.url}${endpoint}?api_key=${global.API_KEY}&query=${query}&page=${global.info.page}`
+    );
+
+    if (!response.ok) {
+      throw new Error('Request failed');
+    }
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function getMovies() {
+  const { page, results, total_results, total_pages } = await searchMovies(
+    '/search/movie',
+    location.search.split('=')[1]
+  );
+  global.info.totalPages = total_pages;
+  const resultsInfo = document.querySelector('.results-info');
+  resultsInfo.innerHTML = `
+  <span>${
+    results.length
+  }</span> OF <span>${total_results}</span> RESULTS FOR <span>${
+    location.search.split('=')[1]
+  }</span>
+  `;
+
+  results.forEach((movie) => {
+    const div = document.createElement('div');
+    div.classList.add('card');
+    div.innerHTML = `
+    <div class='card__image'><a href="movie_details.html?id=${movie.id}">
+    
+    <img  src="${
+      movie.poster_path
+        ? global.urlToImage + movie.poster_path
+        : '/images/no-image.jpg'
+    }" alt="" />
+    </a></div>
+    <div class="card__caption">
+    <h2 class="card__title">${movie.title}</h2>
+    <p class="card__release">Release: ${movie.release_date}</p>
+    </div>
+    
+    `;
+    document.querySelector('.results-wrapper').appendChild(div);
+    const pagesInfo = document.querySelector('.pages');
+    pagesInfo.innerHTML = `Page <span>${page}</span> of <span>${total_pages}</span>`;
+  });
+  btnPagination();
+}
+
+function btnPagination() {
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  if (global.info.page === 1) {
+    prevBtn.setAttribute('disabled', '');
+  } else {
+    prevBtn.removeAttribute('disabled');
+  }
+  if (global.info.totalPages === global.info.page) {
+    nextBtn.setAttribute('disabled', '');
+  } else {
+    nextBtn.removeAttribute('disabled');
+  }
+}
+
+function pagination() {
+  prevBtn.addEventListener('click', async () => {
+    document.querySelector('.results-wrapper').innerHTML = '';
+    global.info.page--;
+    await getMovies();
+  });
+
+  nextBtn.addEventListener('click', async () => {
+    document.querySelector('.results-wrapper').innerHTML = '';
+    global.info.page++;
+    await getMovies();
+  });
+}
+
 //router
 switch (location.pathname) {
   case '/':
@@ -208,4 +295,7 @@ switch (location.pathname) {
     break;
   case '/movie_details.html':
     showDetails();
+  case '/search.html':
+    getMovies();
+    pagination();
 }

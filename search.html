@@ -10,16 +10,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
-    ></script>
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
     <script defer src="script.js"></script>
     <title>TMDB</title>
   </head>
@@ -39,18 +31,8 @@
       </div>
     </header>
 
-    <!-- Naw-playing -->
-    <section class="now-playing py-2">
-      <div class="container">
-        <h1 class="title text-center p-1 pb-2">Now Playing</h1>
-        <div class="swiper">
-          <div class="swiper-wrapper mb-3"></div>
-        </div>
-      </div>
-    </section>
-
     <!-- Search -->
-    <section class="search-movies">
+    <section class="search-movies mb-1">
       <div class="container">
         <form action="search.html" class="form-search">
           <input
@@ -63,16 +45,24 @@
           <input type="submit" class="btn form-btn" value="Seacrh" />
         </form>
       </div>
+      <div class="results-info text-center"></div>
     </section>
-    <hr style="position: relative; top: 30px; opacity: 0.15" />
 
-    <!-- Popular movies -->
-    <section class="popular-movies mt-3">
+    <!-- Results -->
+
+    <section class="results">
+      <div class="results-wrapper container grid"></div>
+    </section>
+
+    <section class="pagination">
       <div class="container">
-        <div class="popular-movies__header p-1 pb-2">
-          <h1>Popular movies</h1>
-        </div>
-        <div class="popular-movies__content grid"></div>
+        <button id="prevBtn" href="" class="btn pagination__btn">
+          &laquo;
+        </button>
+        <button id="nextBtn" href="" class="btn pagination__btn">
+          &raquo;
+        </button>
+        <div class="pages mt-1"></div>
       </div>
     </section>
 
